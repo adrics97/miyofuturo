@@ -1,0 +1,77 @@
+<app-cabecera></app-cabecera>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3>Modificar el perfil de {{editUser.email}}</h3>
+        </div>
+        <div class="body">
+            <form novalidate class="form-edit-user" [formGroup]="editUserForm" (ngSubmit)="updateUser()"> 
+                <div class="d-flex align-items-center">
+                    <fa-icon [icon]="faEnvelope" class="fa-lg" style="margin-right: 10px;"></fa-icon>
+                    <mat-form-field appearance="outline">    
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" [(ngModel)]="editUser.email" formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div class="d-flex align-items-center">
+                    <fa-icon [icon]="faIdCard" class="fa-lg" style="margin-right: 10px;"></fa-icon>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput type="text" [(ngModel)]="editUser.nombre" formControlName="nombre" >
+
+                    </mat-form-field>   
+                    <mat-form-field appearance="outline">
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput type="text" [(ngModel)]="editUser.apellidos" formControlName="apellidos" >
+                    </mat-form-field>   
+                </div>
+                <div class="d-flex align-items-center">
+                    <fa-icon [icon]="faPhone" class="fa-lg" style="margin-right: 10px;"></fa-icon>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Telefono</mat-label>
+                        <input matInput type="tel" pattern="[0-9]*" [(ngModel)]="editUser.telefono" formControlName="telefono" >
+                    </mat-form-field>   
+                    <fa-icon [icon]="faMapMarkedAlt" class="fa-lg" style="margin-right: 10px; margin-left: 20px;"></fa-icon>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ciudad</mat-label>
+                        <input matInput type="text" [(ngModel)]="editUser.ciudad" formControlName="ciudad">
+                    </mat-form-field>   
+                </div>
+                <div class="d-flex align-items-center">
+                    <fa-icon [icon]="faMapSigns" class="fa-lg" style="margin-right: 10px;"></fa-icon>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Dirección</mat-label>
+                        <input matInput type="text" [(ngModel)]="editUser.direccion" formControlName="direccion">
+                    </mat-form-field>   
+                </div>
+                <div class="d-flex align-items-center">
+                    <fa-icon [icon]="faSchool" class="fa-lg" style="margin-right: 10px;"></fa-icon>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Curso</mat-label>
+                        <mat-select [(ngModel)]="editUser.curso" name="curso" formControlName="curso">
+                            <mat-option *ngFor="let curso of cursos" [value]="curso.value">
+                              {{curso.value}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>   
+                    <mat-form-field appearance="outline">
+                        <mat-label>Instituto</mat-label>
+                        <input matInput type="text" [(ngModel)]="editUser.instituto"formControlName="instituto" >
+
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <tr>
+                        <input matInput type="password">
+                        <button class="btn btn-primary">Actualizar contraseña</button>
+                    </tr>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" type="submit">Modificar perfil</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<app-footer></app-footer>

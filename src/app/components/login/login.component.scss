@@ -1,0 +1,36 @@
+.form-login {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.form-register {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.container{
+  margin-top: 50px;
+}
+
+.card{
+  border: 1px solid blanchedalmond;
+}
+
+mat-divider {
+  border: 10px;
+}
+
+mat-form-field{
+  margin-right: 10px;
+}
+
+.row{
+  display: block;
+}
+

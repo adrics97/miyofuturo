@@ -1,0 +1,40 @@
+<app-cabecera></app-cabecera>
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center" *ngIf="usuario" >
+            <h3>Mis notas en {{usuario.curso}}</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>Asignatura</th>
+                        <th>1º Evaluación</th>
+                        <th>2º Evaluación</th>
+                        <th>3º Evaluación</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let nota of notas" >
+                        <td>{{nota.idasignatura.nombre}}</td>
+                        <td>{{nota.calificacion_1}}</td>
+                        <td>{{nota.calificacion_2}}</td>
+                        <td>{{nota.calificacion_3}}</td>
+                        <td>
+                            <button class="btn btn-warning" (click)="editNote(nota.idusuario.idusuario, nota.idasignatura.idasignatura)">Editar</button>
+                            <button class="btn btn-danger" style="margin-left: 10px;" (click)="deleteNote(nota.idusuario.idusuario, nota.idasignatura.idasignatura)">Borrar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <button class="btn btn-success" type="submit" style="margin-left: 10px;" [routerLink]="['/asignaturas']">Añadir asignatura</button>
+                        </td>
+                    </tr>       
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

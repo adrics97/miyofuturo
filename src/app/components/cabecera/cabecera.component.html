@@ -1,0 +1,30 @@
+<mat-toolbar>
+    <a mat-button routerLink="/home" routerLinkActive="activo"><fa-icon [icon]="faHome"></fa-icon> Home</a>
+    <a mat-button routerLink="/notas" routerLinkActive="activo"><fa-icon [icon]="faStickyNote"></fa-icon> Notas</a>
+    <a mat-button routerLink="/eventos" routerLinkActive="activo"><fa-icon [icon]="faCalendar"></fa-icon> Eventos</a>
+    <a mat-button routerLink="/academias" routerLinkActive="activo"><fa-icon [icon]="faSchool"></fa-icon> Academias</a>
+    <a mat-button routerLink="/universidades" routerLinkActive="activo"><fa-icon [icon]="faGraduationCap"></fa-icon> Universidades y Carreras</a>
+    <a mat-button routerLink="/nosotros" routerLinkActive="activo"><fa-icon [icon]="faInfo"></fa-icon> Nosotros </a>
+    <span class="flex-spacer"></span>
+    <a mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faUser"
+         [style]="asignaturas.length==0 || !testExist ? {'color': 'red'} : {'color': 'white'} "></fa-icon> {{cuenta}} </a>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/asignaturas">
+            <fa-icon [icon]="faVial" [style]="asignaturas.length>0 ? {'color': 'black'} : {'color': 'red'} "></fa-icon>
+            <span> Mis asignaturas</span>    
+        </button>
+        <button mat-menu-item [routerLink]="['/usuarios/edit/', idusuario]">
+            <fa-icon [icon]="faIdCard"></fa-icon>
+            <span> Modificar perfil</span>
+        </button>
+        <button mat-menu-item>
+            <fa-icon [icon]="faStar" ></fa-icon>
+            <span> Mis favoritos</span>
+        </button>
+        <button mat-menu-item routerLink="/test">
+            <fa-icon [icon]="faFileAlt" [style]="testExist ? {'color': 'black'} : {'color': 'red'} "></fa-icon>
+            <span> Test de personalidad</span>
+        </button>
+    </mat-menu>  
+    <a mat-button (click)="logOut()" routerLink="/login"><fa-icon [icon]="faSignInAlt" class="btn btn-danger"> </fa-icon> Log out </a>
+</mat-toolbar>

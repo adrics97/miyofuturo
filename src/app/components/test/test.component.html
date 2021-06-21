@@ -1,0 +1,28 @@
+<app-cabecera></app-cabecera>
+<div class="container" fxLayout="row" fxLayoutAlign="space-around center">
+    <div class="container">
+        <mat-card  class="text-center">
+            <mat-card-title>
+                <h3>Test de personalidad</h3>
+            </mat-card-title>
+            <mat-card-content>
+                <form novalidate class="form-test" [formGroup]="testForm" (ngSubmit)="saveTest()" >
+                    <div class="row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Pregunta</mat-label>
+                            <input matInput type="text" placeholder="Pregunta" formControlName="pregunta">
+                        </mat-form-field>
+                    </div>     
+                    <div class="row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Respuesta</mat-label>
+                            <input matInput type="text" placeholder="Respuesta" formControlName="respuesta">
+                        </mat-form-field>   
+                    </div>
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<app-footer></app-footer>

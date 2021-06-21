@@ -1,0 +1,53 @@
+<app-cabecera></app-cabecera>
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center" *ngIf="asignatura" >
+            <h3>Notas en {{this.asignatura.nombre}}</h3>
+        </div>
+        <div class="card-body">
+            <form novalidate [formGroup]="editForm" (ngSubmit)="updateNota()">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>1º Evaluación</th>
+                            <th>2º Evaluación</th>
+                            <th>3º Evaluación</th>
+                        </tr>
+                    </thead>    
+                    <tbody class="text-center">
+                        <tr>
+                            <td>
+                                <mat-form-field  appearance="fill" floatLabel="always">
+                                    <mat-label>Nota</mat-label>
+                                    <input matInput type="number" [(ngModel)] = "editNota.calificacion_1" formControlName="calificacion_1" min="0" max="10">
+                                </mat-form-field>   
+                            </td>
+                            <td>
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label>Nota</mat-label>
+                                    <input matInput type="number" [(ngModel)] = "editNota.calificacion_2" formControlName="calificacion_2" min="0" max="10">
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label>Nota</mat-label>
+                                    <input matInput type="number" [(ngModel)] = "editNota.calificacion_3" formControlName="calificacion_3" min="0" max="10">
+                                </mat-form-field>  
+                            </td>     
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <button class="btn btn-danger" [routerLink]="['/notas']">Volver</button>
+                                <button class="btn btn-success" type="submit" style="margin-left: 10px;">Actualizar notas</button>
+                            </td>
+                           
+                        </tr>                   
+                </tbody>
+            </table>
+           
+        </form>
+       
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

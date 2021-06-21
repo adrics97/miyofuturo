@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "miyofuturo-aaefd": {
+      "hosting": {
+        "miyofuturo": [
+          "miyofuturo-aaefd"
+        ]
+      }
+    }
+  }
+}
