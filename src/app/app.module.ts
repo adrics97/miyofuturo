@@ -45,6 +45,10 @@ import { AsignaturasComponent } from './components/asignaturas/asignaturas.compo
 import { EditNotaComponent } from './components/edit-nota/edit-nota.component';
 import { EditUsuarioComponent } from './components/edit-usuario/edit-usuario.component';
 import { TestComponent } from './components/test/test.component';
+import { EventosService } from './services/eventos.service';
+import {MatSliderModule} from '@angular/material/slider';
+import { DetalleEventoComponent } from './components/detalle-evento/detalle-evento.component';
+import { FavoritosComponent } from './components/favoritos/favoritos.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,9 @@ import { TestComponent } from './components/test/test.component';
     AsignaturasComponent,
     EditNotaComponent,
     EditUsuarioComponent,
-    TestComponent
+    TestComponent,
+    DetalleEventoComponent,
+    FavoritosComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +87,7 @@ import { TestComponent } from './components/test/test.component';
     MatDividerModule,
     MatMenuModule,
     MatSelectModule,
+    MatSliderModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -94,6 +101,7 @@ import { TestComponent } from './components/test/test.component';
     ProcesaHTTPMsjService,
     NotasService,
     AsignaturasService,
+    EventosService,
     {
       provide: 'baseURL', useValue:baseURL
     }

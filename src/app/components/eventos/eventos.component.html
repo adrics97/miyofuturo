@@ -1,3 +1,20 @@
 <app-cabecera></app-cabecera>
-<p>eventos works!</p>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3>Eventos 🕦 </h3>
+        </div>
+        <div class="card-body text-center">
+            <mat-list>
+                <mat-list-item *ngFor="let evento of eventos">
+                    <fa-icon mat-list-icon [icon]="faCalendar" ></fa-icon> 
+                    <div mat-line><strong>{{evento.nombre}}</strong></div>
+                    <div mat-line>{{evento.fecha}}</div>
+                    <button type="button" class="btn btn-primary btn-circle" [routerLink]="['/eventos', evento.idevento]">ℹ</button>    
+                </mat-list-item>
+                        
+            </mat-list>      
+        </div>
+    </div>
+</div>
 <app-footer></app-footer>

@@ -1,0 +1,44 @@
+<app-cabecera></app-cabecera>
+<div class="container">
+  <mat-card *ngIf="evento">
+    <mat-card-header>    
+      <mat-card-title>Evento: {{evento.nombre}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-flex justify-content-around">
+      <div>
+        <h5>Descripción: {{evento.descripcion}}</h5>
+        <h5> <fa-icon [icon]="faMapMarkerAlt"></fa-icon> {{evento.ciudad}}</h5>
+        <h5><fa-icon [icon]="faCalendar"></fa-icon> {{evento.fecha}}</h5>
+      </div>
+      <div>
+        <img mat-card-image src="https://picsum.photos/seed/picsum/200/200" style="height: 150px; width: 150px;">
+      </div>
+    </mat-card-content>
+    <mat-card-actions  class="text-center">
+      <button class="btn btn-danger" (click)="volver()"> Volver</button>
+      <a mat-button href="{{evento.url}}"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> URL</a>
+      <button mat-button (click)="addFavoritos(evento.idevento)"> <fa-icon [icon]="faStar" style="color:rgb(50, 228, 59)"></fa-icon> Añadir a favoritos</button>  
+      <button mat-button (click)="formActivated=true"> <fa-icon [icon]="faArrowDown"></fa-icon> Calificar evento</button>   
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div class="container" *ngIf="formActivated">
+  <div class="card text-center">
+    <form novalidate [formGroup]="eventoForm">
+      <div class="card-header">
+          <h3>Valoración del evento</h3>
+      </div>
+      <div class="card-body">
+          <fa-icon [icon]="faStar" style="color:rgb(228, 228, 50)"></fa-icon>
+          <mat-slider min="1" max="5" step="1" value="5" thumbLabel formControlName="valoracion"></mat-slider>
+        <div>
+          <mat-form-field>
+            <textarea matInput formControlName="comentario" placeholder="Comentario" rows=6></textarea>      
+          </mat-form-field>
+        </div>
+        <button class="btn btn-primary" (click)="addForm()">Enviar</button>   
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>

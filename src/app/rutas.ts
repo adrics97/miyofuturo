@@ -11,6 +11,8 @@ import { NosotrosComponent } from "./components/nosotros/nosotros.component";
 import { NotasComponent } from "./components/notas/notas.component";
 import { UniversidadesComponent } from "./components/universidades/universidades.component";
 import { AuthGuard } from "./guards/authguard";
+import { DetalleEventoComponent } from "./components/detalle-evento/detalle-evento.component";
+import { FavoritosComponent } from "./components/favoritos/favoritos.component";
 
 
 
@@ -23,7 +25,9 @@ export const rutas: Routes = [
     {path: 'usuarios/edit/:idusuario', component:EditUsuarioComponent,  canActivate: [AuthGuard]},
     {path: 'asignaturas', component:AsignaturasComponent,  canActivate: [AuthGuard]},
     {path: 'eventos', component:EventosComponent,  canActivate: [AuthGuard]},
+    {path: 'eventos/:idevento', component:DetalleEventoComponent,  canActivate: [AuthGuard]},
     {path: 'academias', component:AcademiasComponent,  canActivate: [AuthGuard]},
+    {path: 'favoritos/:idusuario', component:FavoritosComponent,  canActivate: [AuthGuard]},
     {path: 'universidades', component:UniversidadesComponent,  canActivate: [AuthGuard]},
     {path: 'nosotros', component:NosotrosComponent,  canActivate: [AuthGuard]},
     {path: '', redirectTo: '/home', pathMatch: 'full'}
