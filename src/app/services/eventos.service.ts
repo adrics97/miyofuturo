@@ -35,6 +35,11 @@ export class EventosService {
     .pipe(catchError(this.procesaHttpmsjService.gestionError));
   }
 
+  getEventoFavorito(idevento: Number, idusuario:Number):Observable<EventoFavorito>{
+    return this.http.get<EventoFavorito>(baseURL + "eventos/favoritos/evento?idevento="+idevento+"&idusuario="+idusuario)
+    .pipe(catchError(this.procesaHttpmsjService.gestionError));
+  }
+
   getFavoritosByUsuario(idusuario: Number):Observable<Evento[]>{
     return this.http.get<Evento[]>(baseURL + "eventos/favoritos?idusuario="+idusuario)
     .pipe(catchError(this.procesaHttpmsjService.gestionError));
@@ -50,4 +55,14 @@ export class EventosService {
     .pipe(catchError(this.procesaHttpmsjService.gestionError));
   }
 
+  updateFavorito(idevento: Number, idusuario:Number, eventoFavorito: EventoFavorito):Observable<EventoFavorito>{
+    return this.http.put<EventoFavorito>
+    (baseURL + "eventos/favoritos?idevento="+idevento+"&idusuario="+idusuario, eventoFavorito, httpOptions)
+    .pipe(catchError(this.procesaHttpmsjService.gestionError));
+  }
+
+  getEventosByCity(ciudad: string):Observable<Evento []>{
+    return this.http.get<Evento []>(baseURL + "eventos/ciudad?ciudad="+ciudad)
+    .pipe(catchError(this.procesaHttpmsjService.gestionError));
+  }
 }

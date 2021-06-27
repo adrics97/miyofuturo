@@ -18,25 +18,25 @@
       <button class="btn btn-danger" (click)="volver()"> Volver</button>
       <a mat-button href="{{evento.url}}"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> URL</a>
       <button mat-button (click)="addFavoritos(evento.idevento)"> <fa-icon [icon]="faStar" style="color:rgb(50, 228, 59)"></fa-icon> Añadir a favoritos</button>  
-      <button mat-button (click)="formActivated=true"> <fa-icon [icon]="faArrowDown"></fa-icon> Calificar evento</button>   
+      <button mat-button (click)="changeFormActivated()"> <fa-icon [icon]="formActivated ? faArrowUp:faArrowDown"></fa-icon> Calificar evento</button>   
     </mat-card-actions>
   </mat-card>
 </div>
 <div class="container" *ngIf="formActivated">
   <div class="card text-center">
-    <form novalidate [formGroup]="eventoForm">
+    <form novalidate [formGroup]="eventoForm" (ngSubmit)="addForm()">
       <div class="card-header">
           <h3>Valoración del evento</h3>
       </div>
       <div class="card-body">
           <fa-icon [icon]="faStar" style="color:rgb(228, 228, 50)"></fa-icon>
-          <mat-slider min="1" max="5" step="1" value="5" thumbLabel formControlName="valoracion"></mat-slider>
+          <mat-slider min="1" max="5" step="1" value="5" [(ngModel)]="eventoFormUpdate.valoracion" thumbLabel formControlName="valoracion"></mat-slider>
         <div>
           <mat-form-field>
-            <textarea matInput formControlName="comentario" placeholder="Comentario" rows=6></textarea>      
+            <textarea matInput formControlName="comentario" [(ngModel)]="eventoFormUpdate.comentario" placeholder="Comentario" rows=6></textarea>      
           </mat-form-field>
         </div>
-        <button class="btn btn-primary" (click)="addForm()">Enviar</button>   
+        <button class="btn btn-primary">Enviar</button>   
       </div>
     </form>
   </div>

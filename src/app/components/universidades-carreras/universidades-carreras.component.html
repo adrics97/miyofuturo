@@ -1,0 +1,67 @@
+<app-cabecera></app-cabecera>
+<div class="d-flex justify-content-around">
+    <div class="container">
+        <div class="card text-center">
+            <div class="card-header">
+                <h3> <fa-icon [icon]="faUniversity"></fa-icon> Universidades</h3>
+            </div>
+            <div class="card-body text-center">
+                <mat-list>
+                    <mat-list-item>
+                        <mat-select placeholder="Elige la comunidad" id="comunidad" [(ngModel)]="selectedComunidad">
+                            <mat-option *ngFor="let comunidad of comunidades" [value]="comunidad">
+                                {{comunidad}}
+                            </mat-option>
+                        </mat-select>
+                        <button class="btn btn-primary btn-circle" style="margin-left: 10px;" (click)="searchByComunidad(selectedComunidad)"> <fa-icon [icon]="faSearch"></fa-icon></button>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-select placeholder="Buscar por provincia" id="provincia" [(ngModel)]="selectedProvincia">
+                            <mat-option *ngFor="let pro of provincias" [value]="pro">
+                                {{pro}}
+                            </mat-option>
+                        </mat-select>
+                        <button class="btn btn-primary btn-circle" style="margin-left: 10px;" (click)="searchByProvincia(selectedProvincia)"> <fa-icon [icon]="faSearch"></fa-icon></button>
+                    </mat-list-item>
+                
+                    <mat-list-item *ngFor="let uni of universidades">
+                        <div mat-line>▶ <strong>{{uni.nombre}}</strong> ({{uni.abreviatura}})</div>
+                        <button type="button" class="btn btn-primary btn-circle" [routerLink]="['/universidades', uni.iduniversidad]">ℹ</button>    
+                    </mat-list-item>
+                            
+                </mat-list>      
+            </div>
+        </div>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="container">
+        <div class="card text-center">
+            <div class="card-header">
+                <h3>  <fa-icon [icon]="faUserGraduate"></fa-icon> Carreras</h3>
+            </div>
+            <div class="card-body text-center">
+                <mat-list>
+                    <mat-list-item>
+                        <fa-icon mat-list-icon [icon]="faSearch"></fa-icon>
+                        <mat-select placeholder="Elige el área" id="area" [(ngModel)]="selectedArea">
+                            <mat-option *ngFor="let area of areas" [value]="area">
+                                {{area}}
+                            </mat-option>
+                        </mat-select>
+                        <button class="btn btn-primary btn-circle" style="margin-left: 10px;" (click)="searchByArea(selectedArea)"> <fa-icon [icon]="faSearch"></fa-icon></button>
+                    </mat-list-item>
+                    
+                
+                    <mat-list-item *ngFor="let carrera of carreras">
+                        <div mat-line>▶ <strong>{{carrera.nombre}}</strong> ({{carrera.area}})</div>
+                        <button type="button" class="btn btn-primary btn-circle" [routerLink]="['/carreras', carrera.idcarrera]">ℹ</button>    
+                    </mat-list-item>
+                            
+                </mat-list>      
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<app-footer></app-footer>

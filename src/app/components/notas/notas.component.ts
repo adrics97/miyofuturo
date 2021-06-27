@@ -5,6 +5,7 @@ import { User } from 'src/app/compartido/models/User';
 import { NotasService } from 'src/app/services/notas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
+import {faStickyNote} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-notas',
@@ -15,6 +16,7 @@ export class NotasComponent implements OnInit {
 
   notas: Nota[];
   usuario: User;
+  faStickyNote = faStickyNote
 
   constructor(
     private notasSvc: NotasService,

@@ -1,0 +1,40 @@
+<app-cabecera></app-cabecera>
+<div class="container">
+    <mat-card *ngIf="carrera">
+      <mat-card-header>    
+        <mat-card-title><fa-icon [icon]="faUserGraduate"></fa-icon> {{carrera.nombre}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content >
+        <div>
+          <p>Descripción: {{carrera.descripcion}}</p>
+          <p>Área: {{carrera.area}}</p>
+        </div>
+        <div *ngIf="universidadesWithCarrera.length>0" class="text-center">
+            
+            <h5> <fa-icon [icon]="faUniversity"></fa-icon> Universidades que disponen el {{carrera.nombre}}: </h5>
+            <mat-list>
+                <mat-list-item *ngFor="let uni of universidadesWithCarrera">
+                    <div mat-line>
+                        <mat-button type="button"  (click)="changeMoreDetails()">▶ {{uni.iduniversidad.nombre}} ({{uni.iduniversidad.abreviatura}}) </mat-button> 
+                    </div>
+                        <div mat-line *ngIf="moreDetails">
+                            Precio de la matrícula: {{uni.precio}} €
+                        </div>
+                        <div mat-line *ngIf="moreDetails">
+                            Nota de corte: {{uni.nota_corte}}   
+                        </div>
+                        <div mat-line *ngIf="moreDetails">
+                            <a mat-button href="{{uni.url}}"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> URL</a>
+                        </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions  class="text-center">
+        <button class="btn btn-danger" (click)="volver()"> Volver</button>
+        <button mat-button (click)="addFavoritos(evento.idevento)"> <fa-icon [icon]="faStar" style="color:rgb(50, 228, 59)"></fa-icon> Añadir a favoritos</button>  
+      </mat-card-actions>
+    </mat-card>
+  </div>
+<app-footer></app-footer>

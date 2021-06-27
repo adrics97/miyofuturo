@@ -1,0 +1,40 @@
+<app-cabecera></app-cabecera>
+<div class="container">
+    <mat-card *ngIf="universidad">
+      <mat-card-header>    
+        <mat-card-title><fa-icon [icon]="faUniversity"></fa-icon> {{universidad.nombre}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content >
+        <div>
+          <p>Descripción: {{universidad.descripcion}}</p>
+          <p>Tipo de univerdiad : {{universidad.tipo}}</p>
+          <p> <fa-icon [icon]="faMapMarkerAlt"></fa-icon> {{universidad.comunidad}} ➡ {{universidad.provincia}}</p>
+        </div>
+        <div *ngIf="carrerasByUniversidad.length>0" class="text-center">
+            <h5> <fa-icon [icon]="faUserGraduate"></fa-icon> Grados disponibles en {{universidad.nombre}}: </h5>
+            <mat-list>
+                <mat-list-item *ngFor="let grado of carrerasByUniversidad">
+                    <div mat-line>
+                        <mat-button type="button"  (click)="changeMoreDetails()">▶  {{grado.idcarrera.nombre}} </mat-button> 
+                    </div>
+                        <div mat-line *ngIf="moreDetails">
+                            Precio de la matrícula: {{grado.precio}} €
+                        </div>
+                        <div mat-line *ngIf="moreDetails">
+                            Nota de corte: {{grado.nota_corte}}   
+                        </div>
+                        <div mat-line *ngIf="moreDetails">
+                            <a mat-button href="{{grado.url}}"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> URL</a>
+                        </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+        
+      </mat-card-content>
+      <mat-card-actions  class="text-center">
+        <button class="btn btn-danger" (click)="volver()"> Volver</button>
+        <a mat-button href="{{universidad.url}}"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> {{universidad.abreviatura}}</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+<app-footer></app-footer>

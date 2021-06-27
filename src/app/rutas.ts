@@ -9,10 +9,12 @@ import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./components/login/login.component";
 import { NosotrosComponent } from "./components/nosotros/nosotros.component";
 import { NotasComponent } from "./components/notas/notas.component";
-import { UniversidadesComponent } from "./components/universidades/universidades.component";
+import { UniversidadesCarrerasComponent } from "./components/universidades-carreras/universidades-carreras.component";
 import { AuthGuard } from "./guards/authguard";
 import { DetalleEventoComponent } from "./components/detalle-evento/detalle-evento.component";
 import { FavoritosComponent } from "./components/favoritos/favoritos.component";
+import { DetalleCarreraComponent } from "./components/detalle-carrera/detalle-carrera.component";
+import { DetalleUniversidadComponent } from "./components/detalle-universidad/detalle-universidad.component";
 
 
 
@@ -28,7 +30,9 @@ export const rutas: Routes = [
     {path: 'eventos/:idevento', component:DetalleEventoComponent,  canActivate: [AuthGuard]},
     {path: 'academias', component:AcademiasComponent,  canActivate: [AuthGuard]},
     {path: 'favoritos/:idusuario', component:FavoritosComponent,  canActivate: [AuthGuard]},
-    {path: 'universidades', component:UniversidadesComponent,  canActivate: [AuthGuard]},
+    {path: 'universidades', component:UniversidadesCarrerasComponent,  canActivate: [AuthGuard]},
+    {path: 'universidades/:iduniversidad', component:DetalleUniversidadComponent,  canActivate: [AuthGuard]},
+    {path: 'carreras/:idcarrera', component:DetalleCarreraComponent,  canActivate: [AuthGuard]},
     {path: 'nosotros', component:NosotrosComponent,  canActivate: [AuthGuard]},
     {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];

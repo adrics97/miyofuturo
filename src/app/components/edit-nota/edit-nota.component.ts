@@ -45,9 +45,6 @@ export class EditNotaComponent implements OnInit {
     let idasignatura = Number(this.route.snapshot.paramMap.get('idasignatura'));
     this.notasSvc.getNota(idusuario,idasignatura).subscribe(data => {
       this.editNota = data
-      console.log(this.editNota.calificacion_1)
-      console.log(this.editNota.calificacion_2)
-      console.log(this.editNota.calificacion_3)
     })
     this.asignaturasSvc.getAsignatura(idasignatura).subscribe(data => this.asignatura = data)
 

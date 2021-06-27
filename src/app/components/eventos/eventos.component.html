@@ -6,6 +6,17 @@
         </div>
         <div class="card-body text-center">
             <mat-list>
+                <mat-list-item>
+                    <fa-icon mat-list-icon [icon]="faSearch"></fa-icon>
+                    <mat-select placeholder="Elige la ciudad" id="city" [(ngModel)]="selectedCiudad">
+                        <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad">
+                            {{ciudad}}
+                        </mat-option>
+                    </mat-select>
+                    <button class="btn btn-primary btn-circle" style="margin-left: 10px;" (click)="searchByCity(selectedCiudad)"> <fa-icon [icon]="faSearch"></fa-icon></button>
+                </mat-list-item>
+                
+            
                 <mat-list-item *ngFor="let evento of eventos">
                     <fa-icon mat-list-icon [icon]="faCalendar" ></fa-icon> 
                     <div mat-line><strong>{{evento.nombre}}</strong></div>

@@ -6,6 +6,7 @@ import { User } from 'src/app/compartido/models/User';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { NotasService } from 'src/app/services/notas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import {faVial} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-asignaturas',
@@ -28,6 +29,7 @@ export class AsignaturasComponent implements OnInit {
   asignaturaForm: FormGroup
   newNota: Nota = new Nota();
   fk_asignatura: Asignatura;
+  faVial = faVial
 
   constructor(
     private notasSvc: NotasService,

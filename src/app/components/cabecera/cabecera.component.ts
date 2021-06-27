@@ -39,9 +39,7 @@ export class CabeceraComponent implements OnInit {
     this.getEmailLocalStorage();
     this.idusuario = JSON.parse(localStorage.getItem('idusuario'));
     this.notasSvc.getNotasByIdUsuario(this.idusuario).subscribe(data => {
-      console.log(data)
       data.map(nota => {
-        console.log(nota.idasignatura)
         this.asignaturas.push(nota.idasignatura)
       })
     })
@@ -49,7 +47,6 @@ export class CabeceraComponent implements OnInit {
 
   getEmailLocalStorage():Observable<string>{ 
     let email = JSON.parse(localStorage.getItem('email'));
-    console.log(email)
     if(email)
       this.cuenta=email;
     else
@@ -60,6 +57,5 @@ export class CabeceraComponent implements OnInit {
   logOut(){
     this.loginSvc.logOut();
     let usuario = JSON.parse(localStorage.getItem('user'));
-    console.log(usuario);
   }
 }

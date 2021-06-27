@@ -58,6 +58,7 @@
                                 <span [hidden]="!(erroresRegisterForm.email)"> {{erroresRegisterForm.email}}</span>
                             </mat-hint>
                         </mat-form-field>
+                        <fa-icon [icon]="faKey" class="fa-lg" style="margin-right: 10px; margin-left: 10px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Contraseña</mat-label>
                             <input matInput type="password" placeholder="Contraseña" formControlName="password" required>

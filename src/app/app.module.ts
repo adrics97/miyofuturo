@@ -31,7 +31,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotasComponent } from './components/notas/notas.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { AcademiasComponent } from './components/academias/academias.component';
-import { UniversidadesComponent } from './components/universidades/universidades.component';
+import { UniversidadesCarrerasComponent } from './components/universidades-carreras/universidades-carreras.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { environment } from 'src/environments/environment';
 import { LoginService } from './services/login.service';
@@ -49,6 +49,8 @@ import { EventosService } from './services/eventos.service';
 import {MatSliderModule} from '@angular/material/slider';
 import { DetalleEventoComponent } from './components/detalle-evento/detalle-evento.component';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
+import { DetalleUniversidadComponent } from './components/detalle-universidad/detalle-universidad.component';
+import { DetalleCarreraComponent } from './components/detalle-carrera/detalle-carrera.component';
 
 @NgModule({
   declarations: [
@@ -60,14 +62,16 @@ import { FavoritosComponent } from './components/favoritos/favoritos.component';
     NotasComponent,
     EventosComponent,
     AcademiasComponent,
-    UniversidadesComponent,
+    UniversidadesCarrerasComponent,
     NosotrosComponent,
     AsignaturasComponent,
     EditNotaComponent,
     EditUsuarioComponent,
     TestComponent,
     DetalleEventoComponent,
-    FavoritosComponent
+    FavoritosComponent,
+    DetalleUniversidadComponent,
+    DetalleCarreraComponent
   ],
   imports: [
     BrowserModule,
