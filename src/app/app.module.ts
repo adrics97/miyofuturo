@@ -51,6 +51,10 @@ import { DetalleEventoComponent } from './components/detalle-evento/detalle-even
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { DetalleUniversidadComponent } from './components/detalle-universidad/detalle-universidad.component';
 import { DetalleCarreraComponent } from './components/detalle-carrera/detalle-carrera.component';
+import { DetalleAcademiaComponent } from './components/detalle-academia/detalle-academia.component';
+import { CarrerasService } from './services/carreras.service';
+import { AcademiasService } from './services/academias.service';
+import { UniversidadesService } from './services/universidades.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,8 @@ import { DetalleCarreraComponent } from './components/detalle-carrera/detalle-ca
     DetalleEventoComponent,
     FavoritosComponent,
     DetalleUniversidadComponent,
-    DetalleCarreraComponent
+    DetalleCarreraComponent,
+    DetalleAcademiaComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +111,9 @@ import { DetalleCarreraComponent } from './components/detalle-carrera/detalle-ca
     NotasService,
     AsignaturasService,
     EventosService,
+    CarrerasService,
+    AcademiasService,
+    UniversidadesService,
     {
       provide: 'baseURL', useValue:baseURL
     }

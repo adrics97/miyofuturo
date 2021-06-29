@@ -28,8 +28,8 @@ export class UniversidadesService {
     .pipe(catchError(this.procesaHttpmsjService.gestionError));
   }
 
-  getUniversidadesByProvincia(provincia:string):Observable<Universidad[]>{
-    return this.http.get<Universidad[]>(baseURL + "universidades/provincia?provincia="+provincia)
+  getUniversidadesByProvincia(provincia:string, comunidad: string):Observable<Universidad[]>{
+    return this.http.get<Universidad[]>(baseURL + "universidades/provincia?provincia="+provincia+"&comunidad="+comunidad)
     .pipe(catchError(this.procesaHttpmsjService.gestionError));
   }
 

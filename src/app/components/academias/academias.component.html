@@ -1,3 +1,30 @@
 <app-cabecera></app-cabecera>
-<p>academias works!</p>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3>  <fa-icon [icon]="faSchool"></fa-icon> Academias</h3>
+        </div>
+        <div class="card-body text-center">
+            <mat-list>
+                <mat-list-item>
+                    <fa-icon mat-list-icon [icon]="faSearch"></fa-icon>
+                    <mat-select placeholder="Elige la ciudad" id="city" [(ngModel)]="selectedCiudad">
+                        <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad">
+                            {{ciudad}}
+                        </mat-option>
+                    </mat-select>
+                    <button class="btn btn-primary btn-circle" style="margin-left: 10px;" (click)="searchByCity(selectedCiudad)"> <fa-icon [icon]="faSearch"></fa-icon></button>
+                </mat-list-item>
+                <mat-list-item *ngFor="let academia of academias">
+                    <fa-icon mat-list-icon [icon]="faSchool" ></fa-icon> 
+                    <div mat-line><strong>{{academia.nombre}}</strong></div>
+                    <div mat-line>{{academia.ciudad}}</div>
+                    <button type="button" class="btn btn-primary btn-circle" [routerLink]="['/academias', academia.idacademia]">
+                        <fa-icon mat-list-icon [icon]="faInfo" ></fa-icon>
+                    </button>    
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+</div>
 <app-footer></app-footer>

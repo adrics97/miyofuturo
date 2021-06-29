@@ -33,7 +33,7 @@
           <mat-slider min="1" max="5" step="1" value="5" [(ngModel)]="eventoFormUpdate.valoracion" thumbLabel formControlName="valoracion"></mat-slider>
         <div>
           <mat-form-field>
-            <textarea matInput formControlName="comentario" [(ngModel)]="eventoFormUpdate.comentario" placeholder="Comentario" rows=6></textarea>      
+            <textarea matInput formControlName="comentario" [(ngModel)]="eventoFormUpdate.comentario" placeholder="Comentario" rows=6 cols=50></textarea>      
           </mat-form-field>
         </div>
         <button class="btn btn-primary">Enviar</button>   

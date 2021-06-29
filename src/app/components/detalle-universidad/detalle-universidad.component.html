@@ -15,17 +15,19 @@
             <mat-list>
                 <mat-list-item *ngFor="let grado of carrerasByUniversidad">
                     <div mat-line>
-                        <mat-button type="button"  (click)="changeMoreDetails()">▶  {{grado.idcarrera.nombre}} </mat-button> 
+                        <mat-button type="button"  (click)="changeMoreDetails(grado.idcarrera)">▶  {{grado.idcarrera.nombre}} </mat-button> 
                     </div>
-                        <div mat-line *ngIf="moreDetails">
+                    <div  mat-line *ngIf="selectedGrado === grado.idcarrera">
+                        <div>
                             Precio de la matrícula: {{grado.precio}} €
                         </div>
-                        <div mat-line *ngIf="moreDetails">
+                        <div mat-line>
                             Nota de corte: {{grado.nota_corte}}   
                         </div>
-                        <div mat-line *ngIf="moreDetails">
-                            <a mat-button href="{{grado.url}}"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> URL</a>
+                        <div mat-line >
+                            <a mat-button href="{{grado.url}}" target="_blank"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> URL</a>
                         </div>
+                    </div>
                 </mat-list-item>
             </mat-list>
         </div>

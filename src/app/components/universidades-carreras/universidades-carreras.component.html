@@ -8,20 +8,20 @@
             <div class="card-body text-center">
                 <mat-list>
                     <mat-list-item>
-                        <mat-select placeholder="Elige la comunidad" id="comunidad" [(ngModel)]="selectedComunidad">
+                        <mat-select placeholder="Elige la comunidad" id="comunidad" [(ngModel)]="selectedComunidad" (selectionChange)="searchComunidad=false">
                             <mat-option *ngFor="let comunidad of comunidades" [value]="comunidad">
                                 {{comunidad}}
                             </mat-option>
                         </mat-select>
                         <button class="btn btn-primary btn-circle" style="margin-left: 10px;" (click)="searchByComunidad(selectedComunidad)"> <fa-icon [icon]="faSearch"></fa-icon></button>
                     </mat-list-item>
-                    <mat-list-item>
+                    <mat-list-item *ngIf="searchComunidad && selectedComunidad!='todas' ">
                         <mat-select placeholder="Buscar por provincia" id="provincia" [(ngModel)]="selectedProvincia">
                             <mat-option *ngFor="let pro of provincias" [value]="pro">
                                 {{pro}}
                             </mat-option>
                         </mat-select>
-                        <button class="btn btn-primary btn-circle" style="margin-left: 10px;" (click)="searchByProvincia(selectedProvincia)"> <fa-icon [icon]="faSearch"></fa-icon></button>
+                        <button class="btn btn-primary btn-circle" style="margin-left: 10px;" (click)="searchByProvincia(selectedProvincia,selectedComunidad)"> <fa-icon [icon]="faSearch"></fa-icon></button>
                     </mat-list-item>
                 
                     <mat-list-item *ngFor="let uni of universidades">

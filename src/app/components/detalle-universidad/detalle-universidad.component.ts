@@ -5,6 +5,7 @@ import { Universidad } from 'src/app/compartido/models/Universidad';
 import { UniversidadesService } from 'src/app/services/universidades.service';
 import {faUniversity, faLink, faStar, faMapMarkerAlt, faUserGraduate} from '@fortawesome/free-solid-svg-icons';
 import { CarrerasService } from 'src/app/services/carreras.service';
+import { Carrera } from 'src/app/compartido/models/Carrera';
 
 @Component({
   selector: 'app-detalle-universidad',
@@ -15,7 +16,7 @@ export class DetalleUniversidadComponent implements OnInit {
 
   universidad: Universidad
   carrerasByUniversidad = []
-  moreDetails = false
+  selectedGrado?: Carrera
   faUniversity = faUniversity
   faLink = faLink
   faStar = faStar
@@ -39,11 +40,11 @@ export class DetalleUniversidadComponent implements OnInit {
     this.location.back();
   }
 
-  changeMoreDetails(){
-    if (!this.moreDetails)
-      this.moreDetails = true;
+  changeMoreDetails(grado: Carrera){
+    if (this.selectedGrado == null)
+      this.selectedGrado = grado
     else
-      this.moreDetails = false;
+      this.selectedGrado = null
   }
 
 }

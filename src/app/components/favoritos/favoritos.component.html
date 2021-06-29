@@ -1,21 +1,51 @@
 <app-cabecera></app-cabecera>
 <div class="container">
     <div class="card text-center">
-        <div class="card-header">
-            <h3>Mis favoritos</h3>
+        <div class="card-header"> 
+            <h3> <fa-icon mat-list-icon [icon]="faStar"></fa-icon> Mis favoritos </h3>
         </div>
-        <div class="card-body text-center" *ngIf="favoritosEventos">
+        <div class="card-body text-center" *ngIf="eventosFavoritos">
             <mat-list>
                 <div mat-subheader>Eventos</div>
-                <mat-list-item *ngFor="let fav of favoritosEventos">
+                <mat-list-item *ngFor="let evefav of eventosFavoritos">
                     <fa-icon mat-list-icon [icon]="faCalendar" ></fa-icon> 
-                    <div mat-line>{{fav.idevento.nombre}}</div>
-                    <div> <fa-icon mat-list-icon [icon]="faStar" style="color:rgb(228, 228, 50)" ></fa-icon>{{fav.valoracion}}</div>
+                    <div mat-line>{{evefav.idevento.nombre}}</div>
+                    <div> <fa-icon mat-list-icon [icon]="faStar" style="color:rgb(228, 228, 50)" ></fa-icon>{{evefav.valoracion}}</div>
                     <div style="margin-left: 10px; margin-right: 10px;">
-                     <button class="btn btn-primary" [routerLink]="['/eventos', fav.idevento.idevento]"><fa-icon mat-list-icon [icon]="faArrowRight"></fa-icon> Ir</button>
+                     <button class="btn btn-primary" [routerLink]="['/eventos', evefav.idevento.idevento]"><fa-icon mat-list-icon [icon]="faArrowRight"></fa-icon> Ir</button>
                     </div>
                     <button class="btn btn-danger btn-circle" 
-                        (click)="deleteFavorito(fav.idevento.idevento, fav.idusuario.idusuario)"><fa-icon mat-list-icon [icon]="faTimes"></fa-icon></button>
+                        (click)="deleteEventoFavorito(evefav.idevento.idevento, evefav.idusuario.idusuario)"><fa-icon mat-list-icon [icon]="faTimes"></fa-icon></button>
+                </mat-list-item>
+            </mat-list>      
+        </div>
+
+        <div class="card-body text-center" *ngIf="carrerasFavoritas">
+            <mat-list>
+                <div mat-subheader>Carreras</div>
+                <mat-list-item *ngFor="let carfav of carrerasFavoritas">
+                    <fa-icon mat-list-icon [icon]="faUserGraduate" ></fa-icon> 
+                    <div mat-line>{{carfav.idcarrera.nombre}}</div>
+                    <div style="margin-left: 10px; margin-right: 10px;">
+                     <button class="btn btn-primary" [routerLink]="['/carreras', carfav.idcarrera.idcarrera]"><fa-icon mat-list-icon [icon]="faArrowRight"></fa-icon> Ir</button>
+                    </div>
+                    <button class="btn btn-danger btn-circle"
+                        (click)="deleteCarreraFavorita(carfav.idcarrera.idcarrera, carfav.idusuario.idusuario)"><fa-icon mat-list-icon [icon]="faTimes"></fa-icon></button>
+                </mat-list-item>
+            </mat-list>      
+        </div>
+
+        <div class="card-body text-center" *ngIf="academiasFavoritas">
+            <mat-list>
+                <div mat-subheader>Academias</div>
+                <mat-list-item *ngFor="let acafav of academiasFavoritas">
+                    <fa-icon mat-list-icon [icon]="faSchool" ></fa-icon> 
+                    <div mat-line>{{acafav.idacademia.nombre}}</div>
+                    <div style="margin-left: 10px; margin-right: 10px;">
+                     <button class="btn btn-primary" [routerLink]="['/academias', acafav.idacademia.idacademia]"><fa-icon mat-list-icon [icon]="faArrowRight"></fa-icon> Ir</button>
+                    </div>
+                    <button class="btn btn-danger btn-circle"
+                        (click)="deleteAcademiaFavorita(acafav.idacademia.idacademia, acafav.idusuario.idusuario)"><fa-icon mat-list-icon [icon]="faTimes"></fa-icon></button>
                 </mat-list-item>
             </mat-list>      
         </div>

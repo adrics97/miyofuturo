@@ -20,9 +20,10 @@ export class UniversidadesCarrerasComponent implements OnInit {
   universidades = []
   carreras = []
   comunidades: String[] = COMUNIDADES
-  provincias: String[] = PROVINCIAS
+  provincias: String[] 
   areas: String[] = AREAS
   selectedComunidad = ''
+  searchComunidad = false
   selectedProvincia = ''
   selectedArea = ''
 
@@ -37,18 +38,22 @@ export class UniversidadesCarrerasComponent implements OnInit {
   }
 
   searchByComunidad(comunidad: string){
-    if(comunidad != "Todas")
-      this.universidadesSvc.getUniversidadesByComunidad(comunidad).subscribe(data => {
-        this.universidades = data
-    })
+    this.searchComunidad = true
+    if(comunidad != "Todas"){
+        this.universidadesSvc.getUniversidadesByComunidad(comunidad).subscribe(data => {this.universidades = data})
+        this.provincias = PROVINCIAS.get(comunidad)
+    }
     else{
       this.universidadesSvc.getUniversidades().subscribe(data => this.universidades=data)
+      this.provincias = PROVINCIAS.get(comunidad)
     }
+    
+    console.log(this.provincias)
   }
 
-  searchByProvincia(provincia: string){
+  searchByProvincia(provincia: string, selectedComunidad: string){
     if(provincia != "Todas")
-      this.universidadesSvc.getUniversidadesByProvincia(provincia).subscribe(data => {
+      this.universidadesSvc.getUniversidadesByProvincia(provincia, selectedComunidad).subscribe(data => {
         this.universidades = data
     })
     else{

@@ -32,12 +32,21 @@
                 <form novalidate [formGroup]="asignaturaForm" (ngSubmit)="addAsignatura()">  
                     <div class="row text-center">
                         <mat-form-field appearance="outline" disabled>
+                            <mat-label>Rama</mat-label>
+                            <mat-select placeholder="Elige la rama de asignaturas" id="rama" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedRama" (selectionChange)="chooseRama(selectedRama)">
+                                <mat-option  *ngFor="let rama of getKeys(ramasAsignaturas)" [value]="rama">
+                                   {{rama}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        
+                        <mat-form-field *ngIf="selectedRama" appearance="outline" style="margin-left: 10px;" > 
                             <mat-label>Asignatura</mat-label>
-                            <input matInput type="text" placeholder="Asignatura" formControlName="nombre">
-                            <mat-hint>
-                                <span [hidden]="!(erroresAsignaturaForm.nombre)"> {{erroresAsignaturaForm.nombre}}
-                                </span>
-                            </mat-hint>
+                            <mat-select placeholder="Elige las asignaturas" formControlName="nombre" id="asignatura">
+                                <mat-option *ngFor="let asig of allAsignaturas" [value]="asig">
+                                    {{asig}}
+                                </mat-option>
+                            </mat-select>
                         </mat-form-field>
     
                     </div>

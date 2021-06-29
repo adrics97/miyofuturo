@@ -15,6 +15,7 @@ import { DetalleEventoComponent } from "./components/detalle-evento/detalle-even
 import { FavoritosComponent } from "./components/favoritos/favoritos.component";
 import { DetalleCarreraComponent } from "./components/detalle-carrera/detalle-carrera.component";
 import { DetalleUniversidadComponent } from "./components/detalle-universidad/detalle-universidad.component";
+import { DetalleAcademiaComponent } from "./components/detalle-academia/detalle-academia.component";
 
 
 
@@ -29,6 +30,7 @@ export const rutas: Routes = [
     {path: 'eventos', component:EventosComponent,  canActivate: [AuthGuard]},
     {path: 'eventos/:idevento', component:DetalleEventoComponent,  canActivate: [AuthGuard]},
     {path: 'academias', component:AcademiasComponent,  canActivate: [AuthGuard]},
+    {path: 'academias/:idacademia', component:DetalleAcademiaComponent,  canActivate: [AuthGuard]},
     {path: 'favoritos/:idusuario', component:FavoritosComponent,  canActivate: [AuthGuard]},
     {path: 'universidades', component:UniversidadesCarrerasComponent,  canActivate: [AuthGuard]},
     {path: 'universidades/:iduniversidad', component:DetalleUniversidadComponent,  canActivate: [AuthGuard]},

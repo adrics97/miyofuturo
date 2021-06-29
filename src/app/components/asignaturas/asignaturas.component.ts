@@ -7,6 +7,8 @@ import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { NotasService } from 'src/app/services/notas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import {faVial} from '@fortawesome/free-solid-svg-icons';
+import { ASIGNATURAS } from 'src/app/compartido/models/Asignaturas';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-asignaturas',
@@ -25,7 +27,10 @@ export class AsignaturasComponent implements OnInit {
   }
 
   asignaturas: Asignatura[] = []
+  ramasAsignaturas = ASIGNATURAS;
+  allAsignaturas: String[];
   usuario: User;
+  selectedRama = ''
   asignaturaForm: FormGroup
   newNota: Nota = new Nota();
   fk_asignatura: Asignatura;
@@ -50,11 +55,18 @@ export class AsignaturasComponent implements OnInit {
         this.asignaturas.push(nota.idasignatura)
       })
     })
-
     this.initFormAsignatura();
+
   }
 
-  
+  getKeys(map: Map<String, String[]>){
+    return Array.from(map.keys());
+  }
+
+  chooseRama(rama:string){ 
+    this.allAsignaturas = ASIGNATURAS.get(rama)
+  }
+
   private initFormAsignatura():void{
     this.asignaturaForm = this.fb.group({
       nombre: ['', [Validators.required]]
@@ -101,6 +113,9 @@ export class AsignaturasComponent implements OnInit {
           console.log("Nota creada: "+{res})
           this.asignaturas.push(res.idasignatura);
         })
+      }
+      else{
+        Swal.fire("Asignatura ya añadida", " ","warning")
       }
     });
   }
