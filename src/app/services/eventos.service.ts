@@ -2,9 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Asignatura } from '../compartido/models/Asignatura';
 import { baseURL } from '../compartido/models/baseurl';
 import { Evento } from '../compartido/models/Evento';
 import { EventoFavorito } from '../compartido/models/EventoFavorito';
+import { EventoRecomendado } from '../compartido/models/EventoRecomendado';
 import { ProcesaHTTPMsjService } from './procesa-httpmsj.service';
 
 const httpOptions = {
@@ -63,6 +65,16 @@ export class EventosService {
 
   getEventosByCity(ciudad: string):Observable<Evento []>{
     return this.http.get<Evento []>(baseURL + "eventos/ciudad?ciudad="+ciudad)
+    .pipe(catchError(this.procesaHttpmsjService.gestionError));
+  }
+
+  getEventosCercanos():Observable<Evento []>{
+    return this.http.get<Evento []>(baseURL + "eventos/cercanos")
+    .pipe(catchError(this.procesaHttpmsjService.gestionError));
+  }
+
+  getEventosRecomendados():Observable<EventoRecomendado []>{
+    return this.http.get<EventoRecomendado []>(baseURL + "eventos/recomendados")
     .pipe(catchError(this.procesaHttpmsjService.gestionError));
   }
 }

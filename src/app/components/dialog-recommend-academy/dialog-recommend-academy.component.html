@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-toolbar color="primary" class="text-center">
+           Asignaturas suspendidas
+    </mat-toolbar>
+    <mat-dialog-content style="margin-top: 10px;" class="text-center">
+        <div *ngIf="notasSuspendidas">
+            <ul *ngFor="let nota of notasSuspendidas">
+                <li>{{nota.idasignatura.nombre}}</li>
+            </ul>
+            <button  mat-raised-button color="accent" (click)="searchAcademias()">Buscar academias</button>
+        </div>
+        <div *ngIf="academiasByCiudad">
+            <mat-list>
+                <mat-list-item *ngFor="let academia of academiasByCiudad">
+                    <fa-icon mat-list-icon [icon]="faSchool" ></fa-icon> 
+                    <div mat-line><strong>{{academia.nombre}}</strong></div>
+                    <div mat-line>{{academia.ciudad}}</div>
+                    <button type="button" class="btn btn-primary btn-circle"  (click)="closeDialog()" [routerLink]="['/academias', academia.idacademia]">
+                        <fa-icon mat-list-icon [icon]="faInfo" ></fa-icon>
+                    </button>    
+                </mat-list-item>
+            </mat-list>
+
+        </div>
+    </mat-dialog-content>
+</div>

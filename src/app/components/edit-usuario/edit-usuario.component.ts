@@ -6,6 +6,8 @@ import { User } from 'src/app/compartido/models/User';
 import { faEnvelope, faPhone, faMapMarkedAlt, faMapSigns, faSchool, faIdCard} from '@fortawesome/free-solid-svg-icons';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
+import * as firebase from 'firebase/app'
+
 
 @Component({
   selector: 'app-edit-usuario',
@@ -84,9 +86,7 @@ export class EditUsuarioComponent implements OnInit {
     })
   }
 
-  updatePassword(){
-    
-  }
+
 
   onCambioValorEditUser(data?: any) {
     if (!this.editUserForm) { return; }
@@ -104,4 +104,6 @@ export class EditUsuarioComponent implements OnInit {
     }
 
   }
+
 }
+

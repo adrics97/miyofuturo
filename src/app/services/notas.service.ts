@@ -50,4 +50,11 @@ export class NotasService {
     .pipe(catchError(this.procesaHttpmsjService.gestionError));
   }
 
+  getNotasSuspendidasByUsuario(idusuario: Number):Observable<Nota []>{
+    return this.http.get<Nota []>(baseURL + "notas/suspendidas?idusuario=" + idusuario)
+  }
+
+  getNotasSobresalientes(idusuario: Number):Observable<Nota []>{
+    return this.http.get<Nota []>(baseURL + "notas/sobresalientes?idusuario=" + idusuario)
+  }
 }

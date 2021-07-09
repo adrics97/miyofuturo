@@ -8,6 +8,8 @@ import { faEnvelope, faPhone, faMapMarkedAlt, faMapSigns, faSchool, faIdCard, fa
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { User } from 'src/app/compartido/models/User';
 import { Curso } from 'src/app/compartido/models/Curso';
+import { MatDialog, MatDialogRef, MatDialogContent } from '@angular/material/dialog';
+import { DialogChangePasswordComponent } from '../dialog-change-password/dialog-change-password.component';
 
 
 @Component({
@@ -89,7 +91,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginSvc: LoginService,
     private usuariosSvc: UsuariosService,
-    private router: Router) { }
+    private router: Router,
+    public dialog: MatDialog) { }
 
  
 
@@ -173,6 +176,11 @@ export class LoginComponent implements OnInit {
     this.registerForm.valueChanges.subscribe(datos => this.onCambioValorRegister(datos));
     this.onCambioValorRegister();
    
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(DialogChangePasswordComponent, {width: '500px', height: '300px'});
+
   }
 
   onCambioValorLogin(data?: any) {

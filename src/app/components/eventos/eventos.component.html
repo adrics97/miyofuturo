@@ -21,7 +21,7 @@
                     <fa-icon mat-list-icon [icon]="faCalendar" ></fa-icon> 
                     <div mat-line><strong>{{evento.nombre}}</strong></div>
                     <div mat-line>{{evento.fecha}}</div>
-                    <button type="button" class="btn btn-primary btn-circle" [routerLink]="['/eventos', evento.idevento]">ℹ</button>    
+                    <button type="button" class="btn btn-primary btn-circle" [routerLink]="['/eventos', evento.idevento]"> <fa-icon [icon]="faInfo"></fa-icon></button>    
                 </mat-list-item>
                         
             </mat-list>      

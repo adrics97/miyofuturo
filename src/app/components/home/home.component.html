@@ -1,44 +1,42 @@
 <app-cabecera></app-cabecera>
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            <h3>Usuarios</h3>
+    <div class="d-flex justify-content-around align-items-center">
+        <div class="content">
+            <h1 style="font-size: 36px;"> <strong>Mi Yo Futuro</strong>
+                : orientación y seguimiento
+                académico <br>
+                para <strong>estudiantes</strong></h1>    
+            <p style="margin-top: 20px;">Mi Yo Futuro es un seguimiento acedémico del estudiante, proporciona recogida de notas, sugerencia de eventos, academias, carreras</p>
+            <button  mat-raised-button color="accent" routerLink="/test">Comenzar el test de personalidad</button>
+            <button mat-button color="accent" style="margin-left: 10px;" routerLink="/asignaturas">Comenzar con tus asignaturas</button>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr class="text-center">
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Email</th> 
-                        <th>Telefono</th>
-                        <th>Ciudad</th>
-                        <th>Direccion</th>
-                        <th>Curso</th>
-                        <th>Instituto</th>
-                        <th>ACCIONES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of usuarios" class="text-center">
-                        <td>{{user.idusuario}}</td>
-                        <td>{{user.nombre}}</td>
-                        <td>{{user.apellidos}}</td>
-                        <td>{{user.email}}</td>
-                        <td>{{user.telefono}}</td>
-                        <td>{{user.ciudad}}</td>
-                        <td>{{user.direccion}}</td>
-                        <td>{{user.curso}}</td>
-                        <td>{{user.instituto}}</td>
-                        <td>
-                            <button class="btn btn-warning">Editar</button>
-                            <button class="btn btn-danger" style="margin-left: 10px;" (click)="deleteUser(user.idusuario)">Borrar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+        <img src="../../../assets/images/logo-MIYOFUTURO.png" height="400" width="400">
+    </div>
+</div>
+<div class="container">
+    <h1 style="font-size: 36px; text-align: center;"> <strong>Eventos cercanos</strong></h1>
+    <div class="d-flex justify-content-around align-items-center">
+        <div class="content text-center">
+            <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"[animation]="'slide'">
+                <mdb-carousel-item *ngFor="let item of slides; let i = index">
+                    <div class="col-md-12" *ngFor="let card of item; let cardIndex = index">
+                        <mdb-card class="my-1">
+                            <mdb-card-body>
+                                <mdb-card-title>
+                                    <h4>{{card.nombre}}</h4>
+                                </mdb-card-title>
+                                <p>{{card.descripcion}}</p>
+                                <p> <fa-icon [icon]="faCalendar"> </fa-icon> {{card.fecha}}</p>
+                                <button  mat-raised-button color="accent" [routerLink]="['/eventos', card.idevento]">Ir al evento</button>
+                            </mdb-card-body>
+                           
+                        </mdb-card>
+                    </div>
+                </mdb-carousel-item>
+            </mdb-carousel>
+            <button mat-button color="accent" style="margin-left: 10px;" routerLink="/eventos">Ir a todos los eventos</button>
+        </div> 
     </div>
 </div>
 <app-footer></app-footer>

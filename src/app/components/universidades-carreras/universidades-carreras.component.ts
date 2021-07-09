@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {faSearch, faUniversity, faUserGraduate} from '@fortawesome/free-solid-svg-icons';
+import {faSearch, faUniversity, faUserGraduate, faInfo} from '@fortawesome/free-solid-svg-icons';
 import { AREAS } from 'src/app/compartido/models/Areas';
 import { CIUDADES } from 'src/app/compartido/models/Ciudades';
 import { COMUNIDADES } from 'src/app/compartido/models/Comunidades';
@@ -17,6 +17,7 @@ export class UniversidadesCarrerasComponent implements OnInit {
   faSearch = faSearch;
   faUniversity = faUniversity;
   faUserGraduate = faUserGraduate;
+  faInfo = faInfo;
   universidades = []
   carreras = []
   comunidades: String[] = COMUNIDADES

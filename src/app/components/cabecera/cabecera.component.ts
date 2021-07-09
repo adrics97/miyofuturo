@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Asignatura } from 'src/app/compartido/models/Asignatura';
 import { LoginService } from 'src/app/services/login.service';
 import { NotasService } from 'src/app/services/notas.service';
+import { TestService } from 'src/app/services/test.service';
 
 @Component({
   selector: 'app-cabecera',
@@ -25,6 +26,7 @@ export class CabeceraComponent implements OnInit {
   faIdCard = faIdCard;
   faVial = faVial;
   faFileAlt = faFileAlt;
+
   testExist = false;
   asignaturas: Asignatura[] = []
   cuenta = '';
@@ -32,7 +34,8 @@ export class CabeceraComponent implements OnInit {
 
   constructor(
     private loginSvc: LoginService,
-    private notasSvc: NotasService
+    private notasSvc: NotasService,
+    private testSvc: TestService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +45,10 @@ export class CabeceraComponent implements OnInit {
       data.map(nota => {
         this.asignaturas.push(nota.idasignatura)
       })
+    })
+    this.testSvc.getTestUsuarioByIdUsuario(this.idusuario).subscribe(data => {
+      if (data.length>0)
+        this.testExist = true  
     })
   }
 

@@ -6,5 +6,6 @@ export class Evento{
     ciudad: string
     fecha: Date
     url: string
+    image: string
    
 }

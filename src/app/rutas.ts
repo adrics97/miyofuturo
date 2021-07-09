@@ -16,6 +16,7 @@ import { FavoritosComponent } from "./components/favoritos/favoritos.component";
 import { DetalleCarreraComponent } from "./components/detalle-carrera/detalle-carrera.component";
 import { DetalleUniversidadComponent } from "./components/detalle-universidad/detalle-universidad.component";
 import { DetalleAcademiaComponent } from "./components/detalle-academia/detalle-academia.component";
+import { TestResultComponent } from "./components/test-result/test-result.component";
 
 
 
@@ -23,6 +24,7 @@ export const rutas: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     {path: 'test', component:TestComponent, canActivate: [AuthGuard]},
+    {path: 'test-result', component:TestResultComponent, canActivate: [AuthGuard]},
     {path: 'notas', component:NotasComponent,  canActivate: [AuthGuard]},
     {path: 'notas/edit/:idusuario/:idasignatura', component:EditNotaComponent,  canActivate: [AuthGuard]},
     {path: 'usuarios/edit/:idusuario', component:EditUsuarioComponent,  canActivate: [AuthGuard]},

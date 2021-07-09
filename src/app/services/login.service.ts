@@ -35,13 +35,15 @@ export class LoginService {
     await this.firebaseAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  changePassword(password: string){
-    /*let user = firebase.auth().currentUser()
-    //user.updatePassword(password).then(function() {
-      console.log("Contraseña modificada correctemete")
-    }).catch(function(error) {
+  async resetPassword(email: string){
+    try{
+      return this.firebaseAuth.sendPasswordResetEmail(email);
+    }
+    catch(error){
       console.log(error)
-    });*/
+    }
+
+
   }
 
    logOut(){

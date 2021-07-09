@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-toolbar color="primary" class="text-center">
+           Eventos recomendados
+    </mat-toolbar>
+    <mat-dialog-content style="margin-top: 10px;" class="text-center">
+        <div *ngIf="notasSobresalientes">
+            <ul *ngFor="let nota of notasSobresalientes">
+                <li>{{nota.idasignatura.nombre}}</li>
+            </ul>
+            <button  mat-raised-button color="accent" (click)="searchEventosRecomendados()">Buscar eventos relacionados</button>
+        </div>
+        <div *ngIf="eventosRecomendados">
+            <mat-list>
+                <mat-list-item *ngFor="let evento of eventosRecomendados">
+                    <fa-icon mat-list-icon [icon]="faCalendar" ></fa-icon> 
+                    <div mat-line><strong>{{evento.idevento.nombre}}</strong></div>
+                    <div mat-line>{{evento.idevento.fecha}}</div>
+                    <button type="button" class="btn btn-primary btn-circle"  (click)="closeDialog()" [routerLink]="['/eventos', evento.idevento.idevento]">
+                        <fa-icon mat-list-icon [icon]="faInfo" ></fa-icon>
+                    </button>    
+                </mat-list-item>
+            </mat-list>
+
+        </div>
+    </mat-dialog-content>
+</div>

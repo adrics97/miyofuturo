@@ -1,9 +1,10 @@
 import { importType } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/compartido/models/User';
-import { NotasService } from 'src/app/services/notas.service';
+
+import { EventosService } from 'src/app/services/eventos.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import Swal from 'sweetalert2';
+import {faCalendar, faSearch} from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -13,39 +14,38 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit {
 
-  usuarios: User[];
+  eventosCercanos = []
+  slides: any = [[]];
+  faCalendar = faCalendar;
   constructor(
     private usuariosSvc: UsuariosService,
-    private notasSvc: NotasService
+    private eventosSvc: EventosService
   ) { }
 
-  ngOnInit(): void {
+   async ngOnInit() {
+    this.eventosSvc.getEventosCercanos().subscribe(data => {this.eventosCercanos=data})
     let email = JSON.parse(localStorage.getItem('email'));
     this.usuariosSvc.getUsuarioByEmail(email).subscribe(data => {
-      console.log("Usuario logueado: "+ data.idusuario)
       localStorage.setItem('idusuario', JSON.stringify(data.idusuario));
     })
-    this.usuariosSvc.getUsuarios().subscribe(data => {this.usuarios = data})
+    
+    await this.delay(1000);
+    console.log(this.eventosCercanos)
+    this.slides =  this.chunk(this.eventosCercanos, 1);
+    
   }
 
-  deleteUser(id: Number){
-    console.log(id)
-    this.notasSvc.getNotasByIdUsuario(id).subscribe(data =>{
-      console.log(data)
-      if (data.length == 0){
-        console.log("El usuario no tiene notas asociadas, se puede borrar")
-        this.usuariosSvc.deleteUser(id).subscribe(data => {
-          this.usuarios = this.usuarios.filter(p => p.idusuario!==id);
-          Swal.fire("Usurio borrado", 'Correctamente', 'success');
-        });
-      } 
-      else{
-        console.log("El usuario tiene notas asociadas, NO se puede borrar")
-        Swal.fire("El usuario tiene asociadas notas", 'Borrar primero las notas', 'error');
-      } 
-    })
-   
+  chunk(arr,chunkSize) {
+    let R = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+      R.push(arr.slice(i, i + chunkSize));
+    }
+    console.log(R)
+    return R;
+  }
 
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
 }

@@ -6,6 +6,9 @@ import { NotasService } from 'src/app/services/notas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 import {faStickyNote} from '@fortawesome/free-solid-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogRecommendAcademyComponent } from '../dialog-recommend-academy/dialog-recommend-academy.component';
+import { DialogRecommendEventComponent } from '../dialog-recommend-event/dialog-recommend-event.component';
 
 @Component({
   selector: 'app-notas',
@@ -21,14 +24,25 @@ export class NotasComponent implements OnInit {
   constructor(
     private notasSvc: NotasService,
     private usuariosSvc: UsuariosService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
 
     let idusuario = JSON.parse(localStorage.getItem('idusuario'));
-    this.notasSvc.getNotasByIdUsuario(idusuario).subscribe(data => { console.log(data), this.notas = data})
+    this.notasSvc.getNotasByIdUsuario(idusuario).subscribe(data => {
+      this.notas = data
+    })
     this.usuariosSvc.getUsuario(idusuario).subscribe(data => {console.log(data), this.usuario = data})
+  }
+
+  openDialog(){
+    this.dialog.open(DialogRecommendAcademyComponent, {width: '500px', height: '500px'});
+  }
+
+  recommendEvent(){
+    this.dialog.open(DialogRecommendEventComponent, {width: '500px', height: '500px'});
   }
 
   editNote(idusuario:Number, idasignatura:Number){

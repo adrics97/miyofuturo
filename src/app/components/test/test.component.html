@@ -7,20 +7,24 @@
             </mat-card-title>
             <mat-card-content>
                 <form novalidate class="form-test" [formGroup]="testForm" (ngSubmit)="saveTest()" >
-                    <div class="row">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Pregunta</mat-label>
-                            <input matInput type="text" placeholder="Pregunta" formControlName="pregunta">
-                        </mat-form-field>
-                    </div>     
-                    <div class="row">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Respuesta</mat-label>
-                            <input matInput type="text" placeholder="Respuesta" formControlName="respuesta">
-                        </mat-form-field>   
+                    <p> 1 = Muchas veces, 3 = Nunca</p>
+                    <div *ngFor="let pregunta of preguntas; let indice=index">
+                        <p> {{indice+1}}. {{pregunta.pregunta}}</p>
+                        <div class="row">
+                        <mat-radio-group formControlName="respuesta" (change)="radioChange(indice+1, $event)" required>
+                            <mat-radio-button value="1"> 1</mat-radio-button>
+                            <mat-radio-button value="2"> 2</mat-radio-button>
+                            <mat-radio-button value="3"> 3</mat-radio-button>
+                        </mat-radio-group>
+                        </div>
                     </div>
-                    <button class="btn btn-primary" type="submit">Enviar</button>
+          
+                    <button class="btn btn-primary" type="submit" [disabled]="respuestas.length<20">Enviar</button>
                 </form>
+                <p style="margin-top: 10px;">
+                    Los resultados obtenidos en estos tests son orientativos, <br> puesto que el diagnóstico debe ser realizado siempre por un psicólogo profesional.
+                </p>
+                
             </mat-card-content>
         </mat-card>
     </div>

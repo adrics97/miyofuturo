@@ -29,6 +29,8 @@
                     <tr>
                         <td colspan="5">
                             <button class="btn btn-success" type="submit" style="margin-left: 10px;" [routerLink]="['/asignaturas']">Añadir asignatura</button>
+                            <button class="btn btn-danger" style="margin-left: 10px;" (click)="openDialog()">Asignaturas suspendidas</button>
+                            <button class="btn btn-primary" style="margin-left: 10px;" (click)="recommendEvent()">Eventos recomendados</button>
                         </td>
                     </tr>       
                 </tbody>

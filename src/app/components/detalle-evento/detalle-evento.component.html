@@ -4,19 +4,19 @@
     <mat-card-header>    
       <mat-card-title>Evento: {{evento.nombre}}</mat-card-title>
     </mat-card-header>
-    <mat-card-content class="d-flex justify-content-around">
+    <mat-card-content class="d-flex justify-content-around align-items-center">
       <div>
         <h5>Descripción: {{evento.descripcion}}</h5>
         <h5> <fa-icon [icon]="faMapMarkerAlt"></fa-icon> {{evento.ciudad}}</h5>
         <h5><fa-icon [icon]="faCalendar"></fa-icon> {{evento.fecha}}</h5>
       </div>
       <div>
-        <img mat-card-image src="https://picsum.photos/seed/picsum/200/200" style="height: 150px; width: 150px;">
+        <img mat-card-image src="../../../assets/eventos/{{evento.image}}">
       </div>
     </mat-card-content>
     <mat-card-actions  class="text-center">
       <button class="btn btn-danger" (click)="volver()"> Volver</button>
-      <a mat-button href="{{evento.url}}"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> URL</a>
+      <a mat-button href="{{evento.url}}" target="_blank"><fa-icon [icon]="faLink" style="color:rgb(77, 115, 241)"></fa-icon> URL</a>
       <button mat-button (click)="addFavoritos(evento.idevento)"> <fa-icon [icon]="faStar" style="color:rgb(50, 228, 59)"></fa-icon> Añadir a favoritos</button>  
       <button mat-button (click)="changeFormActivated()"> <fa-icon [icon]="formActivated ? faArrowUp:faArrowDown"></fa-icon> Calificar evento</button>   
     </mat-card-actions>

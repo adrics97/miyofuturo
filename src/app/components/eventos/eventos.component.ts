@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from 'src/app/compartido/models/Evento';
 import { EventosService } from 'src/app/services/eventos.service';
-import {faCalendar, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faCalendar, faSearch, faInfo} from '@fortawesome/free-solid-svg-icons';
 import { CIUDADES } from 'src/app/compartido/models/Ciudades';
 
 @Component({
@@ -13,6 +13,7 @@ export class EventosComponent implements OnInit {
 
   faCalendar = faCalendar;
   faSearch = faSearch;
+  faInfo = faInfo;
   eventos: Evento[];
   ciudades: String[] = CIUDADES
   selectedCiudad = ''

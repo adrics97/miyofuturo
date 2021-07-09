@@ -1,0 +1,19 @@
+<app-cabecera></app-cabecera>
+<div class="container">
+    <div class="text-center">
+        <h3>Resultados del test vocacional</h3>
+    </div>
+    <div style="display: block">
+        <canvas mdbChart
+            [chartType]="chartType"
+            [datasets]="chartDatasets"
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+</div>
+<app-footer></app-footer>

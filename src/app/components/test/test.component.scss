@@ -1,6 +1,7 @@
 
 mat-card{
-    border: 1px solid blanchedalmond;
+    margin-top: 50px;
+    border: 2px solid #000
 }
 
 mat-form-field {
@@ -12,4 +13,8 @@ mat-form-field {
 .row{
     align-items: center;
     justify-content: center;
+}
+
+mat-radio-button{
+    margin-left: 16px;
 }
