@@ -112,7 +112,7 @@ import { DialogRecommendEventComponent } from './components/dialog-recommend-eve
     MatSliderModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment),
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     MatRadioModule,

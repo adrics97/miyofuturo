@@ -43,7 +43,7 @@ export class DetalleEventoComponent implements OnInit {
     let idevento = Number(this.route.snapshot.paramMap.get('idevento'));
     this.idusuario = JSON.parse(localStorage.getItem('idusuario'));
     this.usuariosSvc.getUsuario(this.idusuario).subscribe(data => {this.fk_usuario = data})
-    this.eventosSvc.getEvento(idevento).subscribe(data => {this.evento = data,console.log(this.evento)});
+    this.eventosSvc.getEvento(idevento).subscribe(data => {this.evento = data});
     this.eventosSvc.getEventoFavorito(idevento, this.idusuario).subscribe(data => {
       if(data != null)
         this.eventoFormUpdate = data

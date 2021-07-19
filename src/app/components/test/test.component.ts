@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { PREGUNTAS } from 'src/app/compartido/models/PREGUNTAS';
 import { Test } from 'src/app/compartido/models/Test';
 import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import Swal from 'sweetalert2';

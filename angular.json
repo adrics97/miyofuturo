@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "miyofuturo"
+  "defaultProject": "miyofuturo",
+  "cli": {
+    "analytics": "146bae63-8ebd-419a-b617-94a9f302d6b4"
+  }
 }
