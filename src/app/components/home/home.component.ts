@@ -29,8 +29,7 @@ export class HomeComponent implements OnInit {
       localStorage.setItem('idusuario', JSON.stringify(data.idusuario));
     })
     
-    await this.delay(1000);
-    console.log(this.eventosCercanos)
+    await this.delay(500);
     this.slides =  this.chunk(this.eventosCercanos, 1);
     
   }
@@ -40,7 +39,6 @@ export class HomeComponent implements OnInit {
     for (let i = 0; i < arr.length; i += chunkSize) {
       R.push(arr.slice(i, i + chunkSize));
     }
-    console.log(R)
     return R;
   }
 

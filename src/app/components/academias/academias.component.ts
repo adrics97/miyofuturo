@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {faSchool, faSearch, faInfo} from '@fortawesome/free-solid-svg-icons';
+import { Academia } from 'src/app/compartido/models/Academia';
 import { CIUDADES } from 'src/app/compartido/models/Ciudades';
 import { AcademiasService } from 'src/app/services/academias.service';
 

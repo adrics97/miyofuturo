@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProcesaHttpmsjService } from './procesa-httpmsj.service';
+import { ProcesaHTTPMsjService } from './procesa-httpmsj.service';
 
 describe('ProcesaHttpmsjService', () => {
-  let service: ProcesaHttpmsjService;
+  let service: ProcesaHTTPMsjService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ProcesaHttpmsjService);
+    service = TestBed.inject(ProcesaHTTPMsjService);
   });
 
   it('should be created', () => {

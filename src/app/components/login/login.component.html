@@ -9,12 +9,12 @@
                 <h3>Inicio de sesión</h3>
             </div>
             <div class="card-body">
-                <form novalidate [formGroup]="loginForm" (ngSubmit)="onLogin()" >
+                <form name="loginForm" novalidate [formGroup]="loginForm" (ngSubmit)="onLogin()" >
                     <div class="row">
                         <fa-icon [icon]="faEnvelope" class="fa-lg" style="margin-right: 10px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
-                            <input matInput type="text" placeholder="Email" formControlName="email">
+                            <input matInput type="text" name="email" placeholder="Email" formControlName="email">
                             <mat-hint>
                                 <span [hidden]="!(erroresLoginForm.email)"> {{erroresLoginForm.email}}
                                 </span>
@@ -25,7 +25,7 @@
                         <fa-icon [icon]="faKey" class="fa-lg" style="margin-right: 10px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Contraseña</mat-label>
-                            <input matInput type="password" placeholder="Contraseña" formControlName="password">
+                            <input matInput type="password" name="password" placeholder="Contraseña" formControlName="password">
                             <mat-hint>
                                 <span [hidden]="!(erroresLoginForm.password)"> {{erroresLoginForm.password}}
                                 </span>
@@ -51,12 +51,12 @@
                 <h3>Registro</h3>
             </div>
             <div class="body">
-                <form novalidate [formGroup]="registerForm" (ngSubmit)="onRegister()" > 
+                <form novalidate name="registroForm" [formGroup]="registerForm" (ngSubmit)="onRegister()" > 
                     <div class="row">
                         <fa-icon [icon]="faEnvelope" class="fa-lg" style="margin-right: 10px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
-                            <input matInput type="text" placeholder="Email" formControlName="email" [class]="isValidField('email', registerForm)" required>
+                            <input matInput type="text" name="email-registro" placeholder="Email" formControlName="email" [class]="isValidField('email', registerForm)" required>
                             <mat-hint>
                                 <span [hidden]="!(erroresRegisterForm.email)"> {{erroresRegisterForm.email}}</span>
                             </mat-hint>
@@ -64,7 +64,7 @@
                         <fa-icon [icon]="faKey" class="fa-lg" style="margin-right: 10px; margin-left: 10px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Contraseña</mat-label>
-                            <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
+                            <input matInput type="password" name="password-registro" placeholder="Contraseña" formControlName="password" required>
                             <mat-hint>
                                 <span [hidden]="!(erroresRegisterForm.password)"> {{erroresRegisterForm.password}}
                                 </span>
@@ -75,7 +75,7 @@
                         <fa-icon [icon]="faIdCard" class="fa-lg" style="margin-right: 10px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Nombre</mat-label>
-                            <input matInput type="text" placeholder="Nombre" formControlName="nombre" required>
+                            <input matInput type="text" name="nombre" placeholder="Nombre" formControlName="nombre" required>
                             <mat-hint>
                                 <span [hidden]="!(erroresRegisterForm.nombre)"> {{erroresRegisterForm.nombre}}
                                 </span>
@@ -83,7 +83,7 @@
                         </mat-form-field>   
                         <mat-form-field appearance="outline">
                             <mat-label>Apellidos</mat-label>
-                            <input matInput type="text" placeholder="Apellidos" formControlName="apellidos" required>
+                            <input matInput type="text" name="apellidos" placeholder="Apellidos" formControlName="apellidos" required>
                             <mat-hint>
                                 <span [hidden]="!(erroresRegisterForm.apellidos)"> {{erroresRegisterForm.apellidos}}
                                 </span>
@@ -94,7 +94,7 @@
                         <fa-icon [icon]="faPhone" class="fa-lg" style="margin-right: 10px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Telefono</mat-label>
-                            <input matInput type="tel" placeholder="Telefono" pattern="[0-9]*" formControlName="telefono" required>
+                            <input matInput type="tel" name="telefono" placeholder="Telefono" pattern="[0-9]*" formControlName="telefono" required>
                             <mat-hint>
                                 <span [hidden]="!(erroresRegisterForm.telefono)"> {{erroresRegisterForm.telefono}}
                                 </span>
@@ -104,7 +104,7 @@
                         <fa-icon [icon]="faMapMarkedAlt" class="fa-lg" style="margin-right: 10px; margin-left: 20px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Ciudad</mat-label>
-                            <input matInput type="text" placeholder="Ciudad" formControlName="ciudad" required>
+                            <input matInput type="text" name="ciudad" placeholder="Ciudad" formControlName="ciudad" required>
                             <mat-hint>
                                 <span [hidden]="!(erroresRegisterForm.ciudad)"> {{erroresRegisterForm.ciudad}}
                                 </span>
@@ -115,7 +115,7 @@
                         <fa-icon [icon]="faMapSigns" class="fa-lg" style="margin-right: 10px;"></fa-icon>
                         <mat-form-field appearance="outline">
                             <mat-label>Dirección</mat-label>
-                            <input matInput type="text" placeholder="Dirección" formControlName="direccion" required>
+                            <input matInput type="text" name="direccion" placeholder="Dirección" formControlName="direccion" required>
                             <mat-hint>
                                 <span [hidden]="!(erroresRegisterForm.direccion)"> {{erroresRegisterForm.direccion}}
                                 </span>
@@ -127,7 +127,7 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Curso</mat-label>
                             <mat-select [(ngModel)]="selectedCurso" name="curso" formControlName="curso">
-                                <mat-option *ngFor="let curso of cursos" [value]="curso.value">
+                                <mat-option *ngFor="let curso of cursos"  [value]="curso.value">
                                 {{curso.value}}
                                 </mat-option>
                             </mat-select>
@@ -138,7 +138,7 @@
                         </mat-form-field>   
                         <mat-form-field appearance="outline">
                             <mat-label>Instituto</mat-label>
-                            <input matInput type="text" placeholder="Instituto" formControlName="instituto" required>
+                            <input matInput type="text" name="instituto" placeholder="Instituto" formControlName="instituto" required>
                             <mat-hint>
                                 <span [hidden]="!(erroresRegisterForm.instituto)"> {{erroresRegisterForm.instituto}}
                                 </span>

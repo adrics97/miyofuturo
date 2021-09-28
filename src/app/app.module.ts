@@ -23,7 +23,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {MatRadioModule} from '@angular/material/radio';
 import { ChartsModule } from 'ng2-charts';
 
-
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -63,6 +62,7 @@ import { DialogChangePasswordComponent } from './components/dialog-change-passwo
 import { TestResultComponent } from './components/test-result/test-result.component';
 import { DialogRecommendAcademyComponent } from './components/dialog-recommend-academy/dialog-recommend-academy.component';
 import { DialogRecommendEventComponent } from './components/dialog-recommend-event/dialog-recommend-event.component';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @NgModule({
   declarations: [
@@ -112,7 +112,7 @@ import { DialogRecommendEventComponent } from './components/dialog-recommend-eve
     MatSliderModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     MatRadioModule,

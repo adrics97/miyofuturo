@@ -3,6 +3,11 @@
 
 module.exports = function (config) {
   config.set({
+    client: {
+      jasmine: {
+        random: false
+      }
+    },
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [

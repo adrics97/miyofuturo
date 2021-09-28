@@ -119,12 +119,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+
   async onRegister(): Promise<void>{
-    console.log(this.registerForm.value)
     if (this.registerForm.valid){
       try{
         const formRegister = this.registerForm.value;
-        //await this.loginSvc.onSignUp(formRegister.email, formRegister.password);
+        await this.loginSvc.onSignUp(formRegister.email, formRegister.password);
         this.newUser = this.registerForm.value;
         console.log(this.newUser)
         this.usuariosSvc.createUsuario(this.newUser).subscribe(data => {
@@ -132,12 +132,27 @@ export class LoginComponent implements OnInit {
           console.log("Usuario creado: "+data.idusuario)
           localStorage.setItem('idusuario', JSON.stringify(data.idusuario));
           localStorage.setItem('usuario', JSON.stringify(data));
-          Swal.fire("Registrado completado", 'Inicia sesión para acceder!', 'success') 
+          Swal.fire("Registrado completado", 'Inicia sesión para acceder!', 'success')
+          this.registerForm.reset({
+            email: ' ',
+            password: ' ',
+            nombre: ' ',
+            apellidos: ' ',
+            telefono: 0,
+            ciudad: ' ',
+            direccion: ' ',
+            curso: ' ',
+            instituto: ' '
+          })
+          this.router.navigate(['/login'])
+       
         })
+        
+       
 
         
       }catch(e){
-        Swal.fire("Oops.....", "Email ya registrado", 'error')
+        Swal.fire("Oops.....", "Error al crear el nuevo usuario", 'error')
       }
     }
     else{
